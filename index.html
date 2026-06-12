@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="store-products.css" />
+    <link rel="stylesheet" href="trend-intelligence.css" />
   </head>
   <body>
     <header class="topbar">
@@ -114,15 +115,27 @@
 
       <section class="content-section trend-section" id="trends">
         <div class="section-heading">
-          <div><span class="section-kicker">Just nu</span><h2>Trender att ha koll på</h2></div>
-          <p>Trendpoängen väger ihop sökningar, sociala signaler och nyheter från svenska butiker.</p>
+          <div><span class="section-kicker">Trendradar Sverige</span><h2>Vad är på väg upp?</h2></div>
+          <p>Vi skiljer på en snabb spike och en trend som håller. Poängen väger ihop svensk sökökning, längre momentum och produktutbud.</p>
         </div>
-        <div class="trend-grid">
-          <article class="trend-card"><div class="trend-rank">01</div><div class="trend-meter"><span style="width:92%"></span></div><h3>Jordtoner</h3><p>Oliv, brun och rå denim ersätter helsvart.</p><strong>92 / 100</strong></article>
-          <article class="trend-card"><div class="trend-rank">02</div><div class="trend-meter"><span style="width:87%"></span></div><h3>Smart preppy</h3><p>Stickat, skjorta och sportiga kontraster.</p><strong>87 / 100</strong></article>
-          <article class="trend-card"><div class="trend-rank">03</div><div class="trend-meter"><span style="width:81%"></span></div><h3>Statement-klockor</h3><p>En detalj som gör enkla outfits personliga.</p><strong>81 / 100</strong></article>
-          <article class="trend-card"><div class="trend-rank">04</div><div class="trend-meter"><span style="width:76%"></span></div><h3>Raka silhuetter</h3><p>Mer form, mindre överdriven oversize.</p><strong>76 / 100</strong></article>
+        <div class="trend-toolbar">
+          <div class="signal-status"><span></span><strong>Research snapshot</strong><small>Modellen är redo för schemalagd pytrends-data</small></div>
+          <div class="period-switch" aria-label="Välj trendperiod">
+            <button class="active" data-period="week">7 dagar</button>
+            <button data-period="quarter">3 månader</button>
+          </div>
         </div>
+        <div class="trend-dashboard">
+          <div class="trend-list" id="trendList"></div>
+          <aside class="trend-detail" id="trendDetail"></aside>
+        </div>
+        <div class="method-row">
+          <div><span class="method-number">40%</span><strong>Kort momentum</strong><small>Upptäcker vad som växer denna vecka.</small></div>
+          <div><span class="method-number">30%</span><strong>Lång riktning</strong><small>Skiljer trend från tillfällig spike.</small></div>
+          <div><span class="method-number">20%</span><strong>Relaterade sökningar</strong><small>Visar vilka ord och märken som följer med.</small></div>
+          <div><span class="method-number">10%</span><strong>Produktutbud</strong><small>Kontrollerar om stilen faktiskt går att köpa.</small></div>
+        </div>
+        <p class="trend-disclaimer">Nuvarande poäng är en demonstrativ research-snapshot, inte live Google-data. Google Trends är normaliserat 0–100 och TikTok-signaler kan vara geografiskt och viralt snedvridna.</p>
       </section>
 
       <section class="grooming-section" id="grooming">
