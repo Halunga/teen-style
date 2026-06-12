@@ -20,7 +20,7 @@ Open `http://127.0.0.1:8000`.
 - Interactive hair guide with hairstyle matches, barber instructions, routines, and budget-aware styling products
 - Responsive desktop and mobile interface
 
-The featured catalog uses a curated selection from Kids Brand Store with direct product links and retailer-hosted product images. A GitHub Action attempts a validated refresh on the first day of every month. Displayed prices must always be verified at the retailer before purchase.
+The featured catalog uses a curated selection from Kids Brand Store with direct product links and retailer-hosted product images. A scheduled catalog job performs a validated refresh approximately monthly. Displayed prices must always be verified at the retailer before purchase.
 
 ## Live-data roadmap
 
@@ -44,4 +44,4 @@ npx playwright install chromium
 npm run refresh:catalog
 ```
 
-The importer refuses to replace the current catalog if it finds suspiciously few valid products. The monthly GitHub Action commits a successful refresh, which triggers a new Vercel deployment.
+The importer refuses to replace the current catalog if it finds suspiciously few valid products. The scheduled refresh commits a successful catalog update, which triggers a new Vercel deployment.
