@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f1ea" />
+    <title>STILKOLL — Stil, deals och inspiration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="store-products.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="logo" href="#top">STIL<span>KOLL</span></a>
+      <nav class="desktop-nav" aria-label="Huvudnavigation">
+        <a class="active" href="#deals">Deals</a>
+        <a href="#looks">Looks</a>
+        <a href="#trends">Trender</a>
+        <a href="#grooming">Grooming</a>
+      </nav>
+      <div class="top-actions">
+        <button class="icon-button" id="searchToggle" aria-label="Sök">⌕</button>
+        <button class="saved-button" id="savedToggle">Sparat <span id="savedCount">0</span></button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span></span> Stil som funkar i Sverige</div>
+          <h1>Din stil.<br /><em>Bättre pris.</em></h1>
+          <p>Upptäck deals, bygg outfits och lär dig vad som faktiskt passar ihop. Utvalt för svenska tonåringar.</p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#deals">Hitta deals <span>→</span></a>
+            <a class="text-button" href="#looks">Bygg en look</a>
+          </div>
+          <div class="hero-stats">
+            <div><strong>24</strong><span>butiker bevakade</span></div>
+            <div><strong>128</strong><span>deals just nu</span></div>
+            <div><strong>2h</strong><span>senast uppdaterad</span></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-image"></div>
+          <div class="trend-chip"><span>Trendande</span><strong>Stockholm Utility</strong><small>+42% denna vecka</small></div>
+          <div class="price-chip"><small>Komplett look</small><strong>1 497 kr</strong><span>−36%</span></div>
+        </div>
+      </section>
+
+      <section class="quick-section">
+        <div class="section-kicker">Vad letar du efter?</div>
+        <div class="category-row" id="categoryRow">
+          <button class="category-card active" data-category="all"><span>✦</span><strong>Allt</strong><small>128 deals</small></button>
+          <button class="category-card" data-category="jackor"><span>▰</span><strong>Jackor</strong><small>18 deals</small></button>
+          <button class="category-card" data-category="overdelar"><span>▤</span><strong>Överdelar</strong><small>32 deals</small></button>
+          <button class="category-card" data-category="byxor"><span>▥</span><strong>Byxor</strong><small>24 deals</small></button>
+          <button class="category-card" data-category="skor"><span>◒</span><strong>Skor</strong><small>29 deals</small></button>
+          <button class="category-card" data-category="accessoarer"><span>◉</span><strong>Accessoarer</strong><small>25 deals</small></button>
+        </div>
+      </section>
+
+      <section class="content-section" id="deals">
+        <div class="section-heading">
+          <div><span class="section-kicker">Prisbevakning</span><h2>Deals värda din tid</h2></div>
+          <div class="deal-controls">
+            <label class="search-field"><span>⌕</span><input id="searchInput" type="search" placeholder="Sök produkt eller butik" /></label>
+            <select id="sortSelect" aria-label="Sortera deals">
+              <option value="score">Bäst deal</option>
+              <option value="price-low">Lägst pris</option>
+              <option value="discount">Störst rabatt</option>
+            </select>
+          </div>
+        </div>
+        <div class="retailer-strip">
+          <div><span class="retailer-dot"></span><strong>Utvalt från Kids Brand Store</strong><small>Priser hämtade 12 juni 2026 · kontrollera pris och lager hos butiken</small></div>
+          <a href="https://kidsbrandstore.se/kille" target="_blank" rel="noopener noreferrer">Se alla killkläder ↗</a>
+        </div>
+        <div class="filter-row">
+          <button class="filter-pill active" data-filter="all">Alla</button>
+          <button class="filter-pill" data-filter="under500">Under 500 kr</button>
+          <button class="filter-pill" data-filter="sale30">Minst 30% rabatt</button>
+          <button class="filter-pill" data-filter="secondhand">Second hand</button>
+          <button class="filter-pill" data-filter="new">Nytt idag</button>
+        </div>
+        <div class="product-grid" id="productGrid"></div>
+        <div class="empty-state" id="emptyState" hidden><strong>Inga träffar ännu.</strong><span>Testa ett annat sökord eller filter.</span></div>
+      </section>
+
+      <section class="looks-section" id="looks">
+        <div class="section-heading light">
+          <div><span class="section-kicker">Stil utan gissningar</span><h2>Färdiga looks</h2></div>
+          <p>Varje look är byggd för svenska väder, rimliga budgetar och plagg du kan använda på flera sätt.</p>
+        </div>
+        <div class="looks-grid">
+          <article class="look-card look-one">
+            <div class="look-number">01</div>
+            <div class="look-info"><span>Vardag / Skola</span><h3>Clean Layers</h3><p>Enkelt, genomtänkt och aldrig för uppklätt.</p><button data-toast="Looken har lagts i din stilplan">Se looken <span>→</span></button></div>
+            <div class="look-price"><small>4 plagg</small><strong>1 329 kr</strong></div>
+          </article>
+          <article class="look-card look-two">
+            <div class="look-number">02</div>
+            <div class="look-info"><span>Helg / Stad</span><h3>Utility Mode</h3><p>Praktiska detaljer, jordtoner och rena sneakers.</p><button data-toast="Looken har lagts i din stilplan">Se looken <span>→</span></button></div>
+            <div class="look-price"><small>5 plagg</small><strong>1 849 kr</strong></div>
+          </article>
+          <article class="look-card look-three">
+            <div class="look-number">03</div>
+            <div class="look-info"><span>Match / Häng</span><h3>Blokecore 2.0</h3><p>Fotbollströja möter raka jeans och smarta detaljer.</p><button data-toast="Looken har lagts i din stilplan">Se looken <span>→</span></button></div>
+            <div class="look-price"><small>4 plagg</small><strong>1 497 kr</strong></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="content-section trend-section" id="trends">
+        <div class="section-heading">
+          <div><span class="section-kicker">Just nu</span><h2>Trender att ha koll på</h2></div>
+          <p>Trendpoängen väger ihop sökningar, sociala signaler och nyheter från svenska butiker.</p>
+        </div>
+        <div class="trend-grid">
+          <article class="trend-card"><div class="trend-rank">01</div><div class="trend-meter"><span style="width:92%"></span></div><h3>Jordtoner</h3><p>Oliv, brun och rå denim ersätter helsvart.</p><strong>92 / 100</strong></article>
+          <article class="trend-card"><div class="trend-rank">02</div><div class="trend-meter"><span style="width:87%"></span></div><h3>Smart preppy</h3><p>Stickat, skjorta och sportiga kontraster.</p><strong>87 / 100</strong></article>
+          <article class="trend-card"><div class="trend-rank">03</div><div class="trend-meter"><span style="width:81%"></span></div><h3>Statement-klockor</h3><p>En detalj som gör enkla outfits personliga.</p><strong>81 / 100</strong></article>
+          <article class="trend-card"><div class="trend-rank">04</div><div class="trend-meter"><span style="width:76%"></span></div><h3>Raka silhuetter</h3><p>Mer form, mindre överdriven oversize.</p><strong>76 / 100</strong></article>
+        </div>
+      </section>
+
+      <section class="grooming-section" id="grooming">
+        <div class="grooming-copy">
+          <span class="section-kicker">Mer än kläder</span>
+          <h2>Hår som passar<br />din stil.</h2>
+          <p>Hitta frisyrer för din hårtyp och produkter som gör jobbet utan att tömma kontot.</p>
+          <button class="primary-button" data-toast="Hårguiden öppnas snart">Starta hårguiden <span>→</span></button>
+        </div>
+        <div class="grooming-cards">
+          <article><div class="hair-image hair-one"></div><span>Rakt / Vågigt</span><h3>Textured flow</h3><small>Medium styling · lättskött</small></article>
+          <article><div class="hair-image hair-two"></div><span>Lockigt</span><h3>Modern taper</h3><small>Låg styling · skarp form</small></article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a class="logo" href="#top">STIL<span>KOLL</span></a>
+      <p>Smarta köp. Egen stil. Mindre stress.</p>
+      <span>Demo för svenska marknaden · Priser ska verifieras hos butiken</span>
+    </footer>
+    <div class="toast" id="toast"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
