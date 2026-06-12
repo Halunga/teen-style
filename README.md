@@ -17,6 +17,7 @@ Open `http://127.0.0.1:8000`.
 - Complete outfit inspiration with SEK budgets
 - Swedish-market trend and grooming sections
 - Interactive Swedish trend radar with seven-day and three-month momentum, confidence, related searches, and product availability
+- Interactive hair guide with hairstyle matches, barber instructions, routines, and budget-aware styling products
 - Responsive desktop and mobile interface
 
 The featured catalog currently uses a curated selection from Kids Brand Store with direct product links and retailer-hosted product images. Displayed prices were observed on June 12, 2026 and must be verified at the retailer before purchase.

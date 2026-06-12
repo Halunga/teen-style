@@ -18,6 +18,36 @@ const trends = [
   {id:"blokecore",name:"Blokecore 2.0",category:"Stil",week:-6,quarter:11,score:69,confidence:"Låg säkerhet",available:0,description:"Fotbollströjor lever kvar, men momentum bromsar. Nyare looks blandar sport med smartare byxor och accessoarer.",related:["football jersey outfit","blokecore herr","retro fotbollströja"],bars:[82,79,76,72,71,67,62]}
 ];
 
+const hairPlans = {
+  straight: {
+    short:{name:"Textured crop",brief:"Be om en låg taper, 4–6 cm texturerad längd ovanpå och en mjuk, ojämn lugg.",why:"Ger rakt hår form utan att kräva mycket volym eller lång styling."},
+    medium:{name:"Textured flow",brief:"Behåll 10–14 cm ovanpå, mjuka lager och en saxad taper runt öron och nacke.",why:"Lagren hjälper rakt hår att röra sig i stället för att bara ligga platt."},
+    long:{name:"Layered curtains",brief:"Be om ansiktsramande lager, mittbena och städade längder runt öron och nacke.",why:"Lager gör längre rakt hår lättare och mer genomtänkt."}
+  },
+  wavy: {
+    short:{name:"Wavy taper",brief:"Be om en låg taper och behåll 5–7 cm vågig textur ovanpå.",why:"Tar vara på din naturliga rörelse och behöver nästan ingen värmestyling."},
+    medium:{name:"Messy flow",brief:"Behåll längden, lägg in mjuka lager och undvik att tunna ur för aggressivt.",why:"Vågigt hår har redan den textur många försöker skapa med produkter."},
+    long:{name:"Surfer layers",brief:"Be om långa lager och en ren form runt ansiktet utan hårda linjer.",why:"Kontrollerar volymen men låter vågorna vara huvudgrejen."}
+  },
+  curly: {
+    short:{name:"Modern curly taper",brief:"Be om låg taper, ren nacke och behåll tillräcklig längd ovanpå för definierade lockar.",why:"En tydlig form gör att lockarna ser avsiktliga ut även utan mycket styling."},
+    medium:{name:"Curly fringe",brief:"Behåll rundad form och lockig lugg; klipp helst lock för lock när håret är torrt.",why:"Ramar in ansiktet och visar lockarna utan att bli för brett på sidorna."},
+    long:{name:"Layered curls",brief:"Be om balanserade lager som tar bort tyngd utan att skapa en triangel-form.",why:"Rätt lager ger jämn volym och mindre trassel."}
+  },
+  coily: {
+    short:{name:"Defined low taper",brief:"Be om låg taper och en ren shape-up, men behåll naturlig textur ovanpå.",why:"Skarp form, låg daglig insats och gott om utrymme för din naturliga textur."},
+    medium:{name:"Coily rounded shape",brief:"Be om en jämn rundad form, försiktig trimning och rena kanter.",why:"En balanserad form låter tät textur se fyllig och kontrollerad ut."},
+    long:{name:"Layered coils",brief:"Be om formbevarande lager och minimal urtunning; prioritera friska toppar.",why:"Behåller definition och minskar ojämn tyngd."}
+  }
+};
+
+const routines = {
+  straight:["Fukta lätt","Arbeta in lite produkt från bak till fram","Forma med fingrar och låt torka"],
+  wavy:["Fukta tills håret är lätt fuktigt","Krama in produkt, borsta inte ut","Lufttorka utan att röra för mycket"],
+  curly:["Blöt eller återfukta lockarna","Krama in leave-in och curl cream","Lufttorka eller använd låg diffusor"],
+  coily:["Återfukta med vatten eller leave-in","Fördela kräm sektion för sektion","Låt torka och undvik att pilla"]
+};
+
 let category = "all";
 let filter = "all";
 let saved = JSON.parse(localStorage.getItem("stilkoll-saved") || "[]");
@@ -28,6 +58,9 @@ const searchInput = document.querySelector("#searchInput");
 const sortSelect = document.querySelector("#sortSelect");
 const trendList = document.querySelector("#trendList");
 const trendDetail = document.querySelector("#trendDetail");
+const hairGuide = document.querySelector("#hairGuide");
+const hairGuideForm = document.querySelector("#hairGuideForm");
+const hairGuideResult = document.querySelector("#hairGuideResult");
 let trendPeriod = "week";
 let activeTrend = trends[0].id;
 
@@ -93,6 +126,37 @@ function renderTrendDetail() {
     <a class="trend-source-link" href="${googleUrl}" target="_blank" rel="noopener noreferrer">Utforska signalen i Google Trends ↗</a>`;
 }
 
+function renderHairPlan(formData) {
+  const texture = formData.get("texture");
+  const length = formData.get("length");
+  const effort = formData.get("effort");
+  const budget = formData.get("budget");
+  const plan = hairPlans[texture][length];
+  const styling = effort === "low" ? "Lufttorka och använd mindre än en ärtas storlek produkt." : effort === "medium" ? "Forma med fingrar och använd hårfön på låg värme vid behov." : "Föna kontrollerat och bygg formen i flera små steg.";
+  const products = getHairProducts(texture,budget);
+  const total = products.reduce((sum,item) => sum + item.price,0);
+  hairGuideResult.innerHTML = `
+    <span class="result-label">Din bästa match</span>
+    <h3>${plan.name}</h3>
+    <p class="result-match">${plan.why} ${styling}</p>
+    <div class="barber-brief"><span>Visa eller säg detta till frisören</span><p>“${plan.brief}”</p></div>
+    <div class="routine"><h4>Din morgonrutin</h4><div class="routine-list">${routines[texture].map((step,index)=>`<div><strong>0${index+1}</strong><p>${step}</p></div>`).join("")}</div></div>
+    <div class="products"><h4>Produkter som räcker</h4>${products.map(product=>`<div class="product-recommendation"><div><strong>${product.name}</strong><small>${product.use}</small></div><span>ca ${product.price} kr</span></div>`).join("")}<div class="result-total"><span>Startbudget</span><span>ca ${total} kr</span></div></div>
+    <button class="guide-reset" type="button" id="hairGuideReset">Ändra mina svar</button>`;
+  hairGuideResult.scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+
+function getHairProducts(texture,budget) {
+  const base = texture === "straight"
+    ? [{name:"Matt styling paste",use:"Form och textur",price:89},{name:"Saltvattenspray",use:"Lätt volym",price:79}]
+    : texture === "wavy"
+      ? [{name:"Lätt curl cream",use:"Definition utan tyngd",price:99},{name:"Leave-in spray",use:"Fukt och mindre friss",price:89}]
+      : [{name:"Curl cream",use:"Definition och kontroll",price:109},{name:"Leave-in conditioner",use:"Fukt och mjukhet",price:99}];
+  if (budget === "low") return [base[0]];
+  if (budget === "high") return [...base,{name:"Mildt schampo",use:"Rengör utan att torka ut",price:119}];
+  return base;
+}
+
 document.querySelector("#categoryRow").addEventListener("click", e => {
   const button = e.target.closest("[data-category]"); if (!button) return;
   document.querySelectorAll("[data-category]").forEach(x => x.classList.remove("active")); button.classList.add("active");
@@ -121,6 +185,22 @@ document.querySelector(".period-switch").addEventListener("click", event => {
   const button = event.target.closest("[data-period]"); if (!button) return;
   document.querySelectorAll("[data-period]").forEach(item => item.classList.remove("active")); button.classList.add("active");
   trendPeriod = button.dataset.period; renderTrends();
+});
+document.querySelector("#hairGuideStart").addEventListener("click", () => {
+  hairGuide.hidden = false;
+  hairGuide.scrollIntoView({behavior:"smooth",block:"start"});
+});
+document.querySelector("#hairGuideClose").addEventListener("click", () => {
+  hairGuide.hidden = true;
+  document.querySelector("#grooming").scrollIntoView({behavior:"smooth",block:"start"});
+});
+hairGuideForm.addEventListener("submit", event => {
+  event.preventDefault();
+  renderHairPlan(new FormData(hairGuideForm));
+});
+hairGuideResult.addEventListener("click", event => {
+  if (!event.target.closest("#hairGuideReset")) return;
+  hairGuideForm.scrollIntoView({behavior:"smooth",block:"start"});
 });
 function showToast(message){const toast=document.querySelector("#toast");toast.textContent=message;toast.classList.add("show");clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>toast.classList.remove("show"),2200)}
 renderProducts();

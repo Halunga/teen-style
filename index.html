@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="store-products.css" />
     <link rel="stylesheet" href="trend-intelligence.css" />
+    <link rel="stylesheet" href="hair-guide.css" />
   </head>
   <body>
     <header class="topbar">
@@ -143,12 +144,60 @@
           <span class="section-kicker">Mer än kläder</span>
           <h2>Hår som passar<br />din stil.</h2>
           <p>Hitta frisyrer för din hårtyp och produkter som gör jobbet utan att tömma kontot.</p>
-          <button class="primary-button" data-toast="Hårguiden öppnas snart">Starta hårguiden <span>→</span></button>
+          <button class="primary-button" id="hairGuideStart">Starta hårguiden <span>→</span></button>
         </div>
         <div class="grooming-cards">
           <article><div class="hair-image hair-one"></div><span>Rakt / Vågigt</span><h3>Textured flow</h3><small>Medium styling · lättskött</small></article>
           <article><div class="hair-image hair-two"></div><span>Lockigt</span><h3>Modern taper</h3><small>Låg styling · skarp form</small></article>
         </div>
+      </section>
+      <section class="hair-guide" id="hairGuide" hidden>
+        <div class="hair-guide-head">
+          <div><span class="section-kicker">Din personliga hårguide</span><h2>Fyra val. En enkel plan.</h2></div>
+          <button class="guide-close" id="hairGuideClose" aria-label="Stäng hårguiden">×</button>
+        </div>
+        <div class="guide-layout">
+          <form class="guide-form" id="hairGuideForm">
+            <fieldset>
+              <legend><span>01</span> Hur är ditt hår naturligt?</legend>
+              <div class="guide-options">
+                <label><input type="radio" name="texture" value="straight" checked /><span>Rakt<small>Ligger oftast platt</small></span></label>
+                <label><input type="radio" name="texture" value="wavy" /><span>Vågigt<small>Har naturlig rörelse</small></span></label>
+                <label><input type="radio" name="texture" value="curly" /><span>Lockigt<small>Tydliga lockar</small></span></label>
+                <label><input type="radio" name="texture" value="coily" /><span>Krulligt<small>Täta lockar</small></span></label>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend><span>02</span> Hur långt är det nu?</legend>
+              <div class="guide-options compact">
+                <label><input type="radio" name="length" value="short" checked /><span>Kort</span></label>
+                <label><input type="radio" name="length" value="medium" /><span>Medium</span></label>
+                <label><input type="radio" name="length" value="long" /><span>Längre</span></label>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend><span>03</span> Hur mycket tid vill du lägga?</legend>
+              <div class="guide-options compact">
+                <label><input type="radio" name="effort" value="low" checked /><span>2 min<small>Så enkelt som möjligt</small></span></label>
+                <label><input type="radio" name="effort" value="medium" /><span>5 min<small>Lite styling är okej</small></span></label>
+                <label><input type="radio" name="effort" value="high" /><span>10 min<small>Jag vill forma det</small></span></label>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend><span>04</span> Produktbudget per månad?</legend>
+              <div class="guide-options compact">
+                <label><input type="radio" name="budget" value="low" checked /><span>Under 150 kr</span></label>
+                <label><input type="radio" name="budget" value="medium" /><span>150–300 kr</span></label>
+                <label><input type="radio" name="budget" value="high" /><span>300+ kr</span></label>
+              </div>
+            </fieldset>
+            <button class="guide-submit" type="submit">Visa min hårplan <span>→</span></button>
+          </form>
+          <aside class="guide-result" id="hairGuideResult">
+            <div class="result-placeholder"><span>✦</span><h3>Din rekommendation visas här.</h3><p>Välj det som bäst beskriver ditt hår. Det finns inga rätt eller fel svar.</p></div>
+          </aside>
+        </div>
+        <p class="guide-note">Guiden ger styling- och frisyrförslag, inte medicinsk rådgivning. Vid plötsligt håravfall eller besvär med hårbotten, prata med en vårdnadshavare och vården.</p>
       </section>
     </main>
 
