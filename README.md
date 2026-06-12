@@ -20,11 +20,11 @@ Open `http://127.0.0.1:8000`.
 - Interactive hair guide with hairstyle matches, barber instructions, routines, and budget-aware styling products
 - Responsive desktop and mobile interface
 
-The featured catalog currently uses a curated selection from Kids Brand Store with direct product links and retailer-hosted product images. Displayed prices were observed on June 12, 2026 and must be verified at the retailer before purchase.
+The featured catalog uses a curated selection from Kids Brand Store with direct product links and retailer-hosted product images. A GitHub Action attempts a validated refresh on the first day of every month. Displayed prices must always be verified at the retailer before purchase.
 
 ## Live-data roadmap
 
-1. Create a small scheduled ingestion service using authorized retailer or affiliate product feeds.
+1. Replace the current monthly public-page importer with authorized retailer or affiliate product feeds.
 2. Normalize retailer, product, variant, size, price, previous price, image, URL, and update timestamp.
 3. Store price history to calculate a trustworthy deal score and avoid misleading discounts.
 4. Add stock and size availability, location-aware delivery cost, and price alerts.
@@ -33,3 +33,15 @@ The featured catalog currently uses a curated selection from Kids Brand Store wi
 The trend radar currently uses an explicitly labeled research snapshot. Its model is ready to consume scheduled Swedish Google Trends data through `pytrends`; `pytrends` is unofficial and must be treated as one noisy signal rather than a source of absolute search volume.
 
 Useful source categories include retailer affiliate feeds, Swedish price-comparison partners, and authorized second-hand marketplace integrations. Do not scrape retailer sites without permission.
+
+## Catalog refresh
+
+Run the importer manually with:
+
+```bash
+npm install
+npx playwright install chromium
+npm run refresh:catalog
+```
+
+The importer refuses to replace the current catalog if it finds suspiciously few valid products. The monthly GitHub Action commits a successful refresh, which triggers a new Vercel deployment.

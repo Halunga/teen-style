@@ -1,4 +1,4 @@
-const products = [
+const fallbackProducts = [
   {id:101,name:"Essential Crew Sock 3P",brand:"Björn Borg",store:"Kids Brand Store",category:"accessoarer",price:69.30,old:99,discount:30,new:false,secondhand:false,url:"https://kidsbrandstore.se/products/essential-crew-sock-3p-141457",image:"https://kidsbrandstore.se/_next/image?url=https%3A%2F%2Fimg.kidsbrandstore.com%2FeyJrZXkiOiJtZWRpYS1saWJyYXJ5XC8yMDQ4MzdcLzAxSkM1MlZNNlM4M1dQSFYwRkMxQUNCR1ZQLmpwZyIsImVkaXRzIjp7IndlYnAiOnsicXVhbGl0eSI6OTB9LCJqcGVnIjp7InF1YWxpdHkiOjkwfSwicmVzaXplIjp7IndpZHRoIjpudWxsLCJoZWlnaHQiOm51bGx9fSwiYnVja2V0Ijoia2JzLXBpbS1wcm9kdWN0aW9uIn0%3D&w=1080&q=75"},
   {id:102,name:"Plain T-Shirt",brand:"Lyle & Scott",store:"Kids Brand Store",category:"overdelar",price:269.10,old:299,discount:10,new:false,secondhand:false,url:"https://kidsbrandstore.se/products/plain-t-shirt-99708",image:"https://kidsbrandstore.se/_next/image?url=https%3A%2F%2Fimg.kidsbrandstore.com%2FeyJrZXkiOiJtZWRpYS1saWJyYXJ5XC8yMzMyMzRcLzAxSzlZTlRQTUUzUENOU1k2Uzg3OUZITVcxLmpwZyIsImVkaXRzIjp7IndlYnAiOnsicXVhbGl0eSI6OTB9LCJqcGVnIjp7InF1YWxpdHkiOjkwfSwicmVzaXplIjp7IndpZHRoIjpudWxsLCJoZWlnaHQiOm51bGx9fSwiYnVja2V0Ijoia2JzLXBpbS1wcm9kdWN0aW9uIn0%3D&w=1080&q=75"},
   {id:103,name:"Boys Basic CN Knit S/S",brand:"Tommy Hilfiger",store:"Kids Brand Store",category:"overdelar",price:173.40,old:289,discount:40,new:false,secondhand:false,url:"https://kidsbrandstore.se/products/boys-basic-cn-knit-s-s-10583",image:"https://kidsbrandstore.se/_next/image?url=https%3A%2F%2Fimg.kidsbrandstore.com%2FeyJrZXkiOiJtZWRpYS1saWJyYXJ5XC8yMzMxNThcLzAxSzlZSjMzMEM1WE1NUktQMzZLTVZXNFpDLmpwZyIsImVkaXRzIjp7IndlYnAiOnsicXVhbGl0eSI6OTB9LCJqcGVnIjp7InF1YWxpdHkiOjkwfSwicmVzaXplIjp7IndpZHRoIjpudWxsLCJoZWlnaHQiOm51bGx9fSwiYnVja2V0Ijoia2JzLXBpbS1wcm9kdWN0aW9uIn0%3D&w=1080&q=75"},
@@ -8,6 +8,7 @@ const products = [
   {id:107,name:"Crew Neck Sweatshirt",brand:"Lyle & Scott",store:"Kids Brand Store",category:"overdelar",price:584.10,old:649,discount:10,new:false,secondhand:false,url:"https://kidsbrandstore.se/products/crew-neck-sweatshirt-128182",image:"https://kidsbrandstore.se/_next/image?url=https%3A%2F%2Fimg.kidsbrandstore.com%2FeyJrZXkiOiJtZWRpYS1saWJyYXJ5XC8xOTcxNzBcL3AzcURkdWRaMWVPV0FJRjJNRU9iTlNNREd2TXQySi1tZXRhTlRBMU9UYzNOVEEyTXpJM01pMTBiM0F0Wm5KdmJuUXRRMUl5TFRJdWFuQm4tLmpwZyIsImVkaXRzIjp7IndlYnAiOnsicXVhbGl0eSI6OTB9LCJqcGVnIjp7InF1YWxpdHkiOjkwfSwicmVzaXplIjp7IndpZHRoIjpudWxsLCJoZWlnaHQiOm51bGx9fSwiYnVja2V0Ijoia2JzLXBpbS1wcm9kdWN0aW9uIn0%3D&w=1080&q=75"},
   {id:108,name:"Air Force 1 LE (GS)",brand:"Nike",store:"Kids Brand Store",category:"skor",price:1034.10,old:1149,discount:10,new:false,secondhand:false,url:"https://kidsbrandstore.se/products/air-force-1-le-gs-487783",image:"https://img.kidsbrandstore.com/eyJrZXkiOiJtZWRpYS1saWJyYXJ5XC8yMjQwOThcLzAxSzJDQ0E4WlFGWFFaWVpIVzRDMDJNSlFKLmpwZyIsImVkaXRzIjp7IndlYnAiOnsicXVhbGl0eSI6OTB9LCJqcGVnIjp7InF1YWxpdHkiOjkwfSwicmVzaXplIjp7IndpZHRoIjpudWxsLCJoZWlnaHQiOm51bGx9fSwiYnVja2V0Ijoia2JzLXBpbS1wcm9kdWN0aW9uIn0="}
 ];
+let products = fallbackProducts;
 
 const trends = [
   {id:"baggy",name:"Baggy jeans",category:"Silhuett",week:34,quarter:18,score:91,confidence:"Hög säkerhet",available:2,description:"Rymligare denim fortsätter växa, men rena tvättar och bättre proportioner tar över från extrem oversize.",related:["baggy jeans herr","Levi's 555","wide leg jeans"],bars:[35,48,43,61,70,76,92]},
@@ -63,6 +64,7 @@ const hairGuideForm = document.querySelector("#hairGuideForm");
 const hairGuideResult = document.querySelector("#hairGuideResult");
 let trendPeriod = "week";
 let activeTrend = trends[0].id;
+let visibleLimit = 12;
 
 function renderProducts() {
   const query = searchInput.value.toLowerCase().trim();
@@ -72,6 +74,8 @@ function renderProducts() {
   if (filter === "secondhand") visible = visible.filter(p => p.secondhand);
   if (filter === "new") visible = visible.filter(p => p.new);
   visible.sort((a,b) => sortSelect.value === "price-low" ? a.price-b.price : b.discount-a.discount);
+  const totalVisible = visible.length;
+  visible = visible.slice(0, visibleLimit);
   grid.innerHTML = visible.map(p => `
     <article class="product-card">
       <a class="product-card-link" href="${p.url}" target="_blank" rel="noopener noreferrer" aria-label="Se ${p.brand} ${p.name} hos Kids Brand Store">
@@ -88,7 +92,34 @@ function renderProducts() {
       </div>
     </article>`).join("");
   document.querySelector("#emptyState").hidden = visible.length > 0;
+  document.querySelector("#loadMore").hidden = totalVisible <= visibleLimit;
+  document.querySelector("#loadMore").innerHTML = `Visa fler produkter <span>${visibleLimit} av ${totalVisible} ↓</span>`;
   document.querySelector("#savedCount").textContent = saved.length;
+}
+
+async function loadCatalog() {
+  try {
+    const response = await fetch("products.json", {cache:"no-store"});
+    if (!response.ok) throw new Error("Catalog unavailable");
+    const catalog = await response.json();
+    if (!Array.isArray(catalog.products) || catalog.products.length < fallbackProducts.length) throw new Error("Catalog validation failed");
+    products = catalog.products;
+    document.querySelector("#catalogStatus").textContent = `${products.length} produkter · uppdaterad ${new Intl.DateTimeFormat("sv-SE",{dateStyle:"long"}).format(new Date(catalog.updatedAt))} · kontrollera pris och lager hos butiken`;
+  } catch {
+    document.querySelector("#catalogStatus").textContent = `${products.length} sparade produkter · nästa månatliga uppdatering väntar`;
+  }
+  saved = saved.filter(id => products.some(product => product.id === id));
+  localStorage.setItem("stilkoll-saved", JSON.stringify(saved));
+  updateCategoryCounts();
+  renderProducts();
+}
+
+function updateCategoryCounts() {
+  document.querySelectorAll("[data-count]").forEach(element => {
+    const selected = element.dataset.count;
+    const count = selected === "all" ? products.length : products.filter(product => product.category === selected).length;
+    element.textContent = `${count} ${count === 1 ? "produkt" : "produkter"}`;
+  });
 }
 
 function money(value) {
@@ -160,12 +191,12 @@ function getHairProducts(texture,budget) {
 document.querySelector("#categoryRow").addEventListener("click", e => {
   const button = e.target.closest("[data-category]"); if (!button) return;
   document.querySelectorAll("[data-category]").forEach(x => x.classList.remove("active")); button.classList.add("active");
-  category = button.dataset.category; renderProducts();
+  category = button.dataset.category; visibleLimit = 12; renderProducts();
 });
 document.querySelector(".filter-row").addEventListener("click", e => {
   const button = e.target.closest("[data-filter]"); if (!button) return;
   document.querySelectorAll("[data-filter]").forEach(x => x.classList.remove("active")); button.classList.add("active");
-  filter = button.dataset.filter; renderProducts();
+  filter = button.dataset.filter; visibleLimit = 12; renderProducts();
 });
 grid.addEventListener("click", e => {
   const button = e.target.closest("[data-save]"); if (!button) return;
@@ -174,6 +205,7 @@ grid.addEventListener("click", e => {
 });
 searchInput.addEventListener("input", renderProducts);
 sortSelect.addEventListener("change", renderProducts);
+document.querySelector("#loadMore").addEventListener("click", () => { visibleLimit += 12; renderProducts(); });
 document.querySelector("#searchToggle").addEventListener("click", () => { document.querySelector("#deals").scrollIntoView(); setTimeout(() => searchInput.focus(), 400); });
 document.querySelector("#savedToggle").addEventListener("click", () => showToast(saved.length ? `${saved.length} produkter sparade` : "Du har inte sparat något ännu"));
 document.querySelectorAll("[data-toast]").forEach(button => button.addEventListener("click", () => showToast(button.dataset.toast)));
@@ -205,3 +237,4 @@ hairGuideResult.addEventListener("click", event => {
 function showToast(message){const toast=document.querySelector("#toast");toast.textContent=message;toast.classList.add("show");clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>toast.classList.remove("show"),2200)}
 renderProducts();
 renderTrends();
+loadCatalog();

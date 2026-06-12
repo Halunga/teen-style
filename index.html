@@ -54,12 +54,12 @@
       <section class="quick-section">
         <div class="section-kicker">Vad letar du efter?</div>
         <div class="category-row" id="categoryRow">
-          <button class="category-card active" data-category="all"><span>✦</span><strong>Allt</strong><small>128 deals</small></button>
-          <button class="category-card" data-category="jackor"><span>▰</span><strong>Jackor</strong><small>18 deals</small></button>
-          <button class="category-card" data-category="overdelar"><span>▤</span><strong>Överdelar</strong><small>32 deals</small></button>
-          <button class="category-card" data-category="byxor"><span>▥</span><strong>Byxor</strong><small>24 deals</small></button>
-          <button class="category-card" data-category="skor"><span>◒</span><strong>Skor</strong><small>29 deals</small></button>
-          <button class="category-card" data-category="accessoarer"><span>◉</span><strong>Accessoarer</strong><small>25 deals</small></button>
+          <button class="category-card active" data-category="all"><span>✦</span><strong>Allt</strong><small data-count="all">Laddar…</small></button>
+          <button class="category-card" data-category="jackor"><span>▰</span><strong>Jackor</strong><small data-count="jackor">Laddar…</small></button>
+          <button class="category-card" data-category="overdelar"><span>▤</span><strong>Överdelar</strong><small data-count="overdelar">Laddar…</small></button>
+          <button class="category-card" data-category="byxor"><span>▥</span><strong>Byxor</strong><small data-count="byxor">Laddar…</small></button>
+          <button class="category-card" data-category="skor"><span>◒</span><strong>Skor</strong><small data-count="skor">Laddar…</small></button>
+          <button class="category-card" data-category="accessoarer"><span>◉</span><strong>Accessoarer</strong><small data-count="accessoarer">Laddar…</small></button>
         </div>
       </section>
 
@@ -76,7 +76,7 @@
           </div>
         </div>
         <div class="retailer-strip">
-          <div><span class="retailer-dot"></span><strong>Utvalt från Kids Brand Store</strong><small>Priser hämtade 12 juni 2026 · kontrollera pris och lager hos butiken</small></div>
+          <div><span class="retailer-dot"></span><strong>Kids Brand Store-katalog</strong><small id="catalogStatus">Laddar senaste månadskatalogen…</small></div>
           <a href="https://kidsbrandstore.se/kille" target="_blank" rel="noopener noreferrer">Se alla killkläder ↗</a>
         </div>
         <div class="filter-row">
@@ -88,6 +88,7 @@
         </div>
         <div class="product-grid" id="productGrid"></div>
         <div class="empty-state" id="emptyState" hidden><strong>Inga träffar ännu.</strong><span>Testa ett annat sökord eller filter.</span></div>
+        <button class="load-more" id="loadMore" hidden>Visa fler produkter <span>↓</span></button>
       </section>
 
       <section class="looks-section" id="looks">

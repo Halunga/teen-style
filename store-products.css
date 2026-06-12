@@ -68,6 +68,22 @@
   color: var(--orange);
 }
 
+.load-more {
+  margin: 25px auto 0;
+  padding: 13px 18px;
+  display: flex;
+  gap: 28px;
+  border: 1px solid var(--ink);
+  background: transparent;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.load-more:hover {
+  background: var(--ink);
+  color: white;
+}
+
 @media (max-width: 620px) {
   .retailer-strip,
   .retailer-strip div {
